@@ -20,3 +20,4 @@ mkdir plantilla
 cd plantilla
 unzip plantilla_informe_LaTeX.zip
 ```
+El archivo PDF es la muestra de cómo queda.
