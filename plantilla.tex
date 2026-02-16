@@ -1,0 +1,461 @@
+\documentclass[a4paper]{article} % Formato plantilla
+
+\usepackage[utf8]{inputenc} % Para evitar errores con caracteres especiales
+\usepackage[spanish]{babel} % Para evitar errores con caracteres especiales
+\usepackage[margin=2cm, top=2cm, includefoot]{geometry} % Para establecer márgenes
+\usepackage{graphicx} % Para la inserción de imágenes
+\usepackage[table,xcdraw]{xcolor} % Para la representación de colores
+\usepackage{tikz,lipsum,lmodern} % Para la creación de cajar
+\usepackage[most]{tcolorbox} % Para incorporar colores en la caja
+\usepackage{fancyhdr} % Estilo de la página
+\usepackage[hidelinks]{hyperref} % Gestión de hipervínculos
+\usepackage{setspace} % Para aumentar el interlineado
+\setstretch{1.2}
+\usepackage{parskip} % Eliminar sangría
+\usepackage[figurename=Imagen]{caption}
+\usepackage{ragged2e}
+\usepackage{listings} % Para la inserción de código
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{caption}
+%\usepackage{pgf-pie}
+%\usepackage{pgfplotstable}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.18}
+%\usepgfplotslibrary{statistics}
+
+% Declaración de variables personalizadas
+\newcommand{\logoPortada}{images/logoJASOPortada.png}
+\newcommand{\companyName}{NOMBRE EMPRESA AUDITADA}
+\newcommand{\logoEmpresa}{images/empresaAuditada.png}
+\newcommand{\startDate}{[Fecha Auditoría]}
+\newcommand{\logoAuditor}{images/empresaAuditora.png}
+
+% Definición de número de variables por Severidad
+% --- DATOS ---
+\newcommand{\critica}{1}
+\newcommand{\alta}{2}
+\newcommand{\media}{1}
+\newcommand{\baja}{1}
+
+% --- TOTAL AUTOMÁTICO ---
+\pgfmathsetmacro{\total}{\critica+\alta+\media+\baja}
+
+% Definición de colores
+\definecolor{bluePortada}{HTML}{146c8a}
+
+\newtcolorbox{definicion}{
+  breakable,
+  enhanced,
+  colback=white,
+  colframe=bluePortada!75!black,
+  arc=0mm,
+  boxrule=1pt,
+  leftrule=12mm,
+  fonttitle=\bfseries,
+  coltitle=blue!75!black,
+  title=Definición,
+  attach title to upper=\par,
+}
+
+% Adicionales
+\pagestyle{fancy}
+\setlength{\headheight}{40.2pt}
+\fancyhf{}
+\lhead{\includegraphics[width=3cm]{\logoAuditor}}
+% \rhead{\includegraphics[height=40pt]{\logoCandado}}
+\renewcommand{\headrulewidth}{2pt} % Aumentar tamaño barra
+\renewcommand{\headrule}{\hbox to\headwidth{\color{bluePortada}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\lstlistingname}{Código}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document} % Inicio del documento
+  \cfoot{\thepage}
+  \begin{titlepage}
+    \centering
+    \includegraphics[width=0.5\textwidth]{\logoPortada}\par\vspace{1cm}
+    {\scshape\LARGE \textbf{Informe Técnico-Ejecutivo}\par\vspace{0.4cm}}
+    {\Huge\textcolor{bluePortada}{\textbf{{Empresa \companyName}}}}
+    \vfill
+      \includegraphics[width=\textwidth]{\logoEmpresa}
+    \vfill
+    \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+      \centering
+        Este documento es confidencial y contiene información sensible.
+        \\No debería ser impreso o compartido con terceras entidades.
+    \end{tcolorbox}
+
+    \vfill
+      {\large \startDate}
+    \vfill
+  \end{titlepage}
+
+  % -------------------------------------------------------------------
+  % Comienzo del índice
+  \clearpage
+  \tableofcontents
+  \clearpage
+  % -------------------------------------------------------------------
+  \section{Antecedentes}
+  El presente documento recoge los resultados obtenidos durante la fase de auditoría a la empresa \textbf{\companyName}, dedicada a [DEDICACIÓN DE LA EMPRESA].
+
+    Durante las pruebas se simulan las actividades que realizaría un atacante real, descubriendo las vulnerabilidades, su nivel de riesgo, y generando recomendaciones que permitan al cliente realizar la remediación de estas. En cada sección de este informe se detallan los aspectos importantes de la forma en que un atacante podría utilizar la vulnerabilidad para comprometer y obtener acceso no autorizado a información sensible. Se incluyen además directrices que al ser aplicadas mejoraran los niveles de confidencialidad, integridad y disponibilidad de los sistemas analizados.
+
+% --------------------------------
+% Cuadro Para Dirección URL
+% --------------------------------
+
+  \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=blue!5!white,colframe=blue!75!black,colbacktitle=bluePortada!80!black,
+  title=Dirección URL,fonttitle=\bfseries,
+  boxed title style={size=small,colframe=bluePortada!50!black} ]
+  \centering
+    \href{https://example.com}{\textbf{\color{bluePortada}Dirección URL de Partida}}
+ \end{tcolorbox}
+
+  \vspace{0.5cm}
+
+% --------------------------------
+% Añadir imagen con texto debajo
+% --------------------------------
+  \begin{center}
+    [INSERTAR IMAGEN]
+    %\begin{figure}[h]
+      %\centering
+      %\setlength{\fboxrule}{0.8pt}
+      %\fbox{\includegraphics[width=\textwidth]{images/principalPage.png}}
+      %\caption{Página principal del servicio web de \textbf{\companyName}.}
+    %\end{figure}
+
+  \end{center}
+
+  \section{Objetivos}
+
+  Los objetivos de la presente auditoría de seguridad se enfocan, primeramente, en la identificación de posibles vulnerabilidades y debilidades de la página web de la empresa \textbf{\color{bluePortada}{\companyName}} para su posterior explotación, con el propósito de garantizar la integridad y confidencialidad de la información almacenada en él.
+  \begin{center} 
+    [AÑADIR INFORMACIÓN ADICIONAL SI ES NECESARIO]
+  \end{center}
+
+  % Salto de página
+  %\clearpage
+  \subsection{Alcance}
+
+  La evaluación se ha centrado en los siguientes objetivos establecidos en el alcance. Aquí quedan representados los \textbf{dominios, subdominios y enpoints} que han conllevado alguna incidencia en la auditoría:
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+      \toprule
+      \textbf{Nº} & \textbf{Objetivo} \\
+      \midrule
+      Cliente & \companyName \\
+      1 & [DIRECCIÓN IP] \\
+      2 & ejemplo.com \\
+      3 & subdominio.ejemplo.com \\
+      \bottomrule
+    \end{tabular}
+    \caption{Definición del Alcance y Objetivos de la auditoría}
+  \end{table}
+
+  \subsection{Impedimentos y Limitaciones}
+  
+Aquí quedan reflejados los impedimentos y limitaciones que deberá llevar la auditoría. Todas las acciones aquí especificadas están \textbf{totalmente prohibidas llevarlas a cabo bajo ningún concepto}:
+
+  \begin{itemize}
+    \item \textbf{Impedimento 1}
+    \item \textbf{Impedimento 2}
+    \item \textbf{Impedimento 3}
+  \end{itemize}
+
+  \clearpage
+  \section{Resumen Ejecutivo}
+    Este es un resumen ejecutivo de manera general donde se pueden observar mediante tablas y gráficos las vulnerabilidades y problemas encontrados junto con su severidad durante la auditoría.
+    
+    Al final de este documento se han especificado las \textbf{Contramedidas} a llevar a cabo para la mitigación de estas vulnerabilidades.
+    \begin{center}
+      [AÑADIR INFORMACIÓN ADICIONAL SI ES NECESARIO]
+    \end{center}
+
+%\begin{table}[htbp]
+%\centering
+
+% ---------------- TABLA + DONUT CENTRADOS ----------------
+\begin{center}
+\makebox[\textwidth][c]{%
+
+% ================= TABLA =================
+\begin{minipage}{0.48\textwidth}
+\centering
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Vulnerabilidad} & \textbf{Severidad} \\
+\midrule
+SQL Injection en login & Crítica \\
+XSS Reflejado & Alta \\
+Credenciales por defecto & Alta \\
+Enumeración de usuarios & Media \\
+Información sensible expuesta & Baja \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.3cm}
+{\small Cuadro: Resumen de Vulnerabilidades}
+
+\end{minipage}
+\hspace{1cm}
+% ================= DONUT =================
+\begin{minipage}{0.48\textwidth}
+\centering
+
+% ---- CÁLCULOS AUTOMÁTICOS ----
+\pgfmathtruncatemacro{\total}{\critica+\alta+\media+\baja}
+\pgfmathsetmacro{\totalSafe}{ifthenelse(\total==0,1,\total)}
+
+\pgfmathsetmacro{\angCrit}{\critica/\totalSafe*360}
+\pgfmathsetmacro{\angAlta}{\alta/\totalSafe*360}
+\pgfmathsetmacro{\angMedia}{\media/\totalSafe*360}
+\pgfmathsetmacro{\angBaja}{\baja/\totalSafe*360}
+
+\pgfmathsetmacro{\endCrit}{90+\angCrit}
+\pgfmathsetmacro{\endAlta}{\endCrit+\angAlta}
+\pgfmathsetmacro{\endMedia}{\endAlta+\angMedia}
+\pgfmathsetmacro{\endBaja}{\endMedia+\angBaja}
+
+\pgfmathtruncatemacro{\pCrit}{round(\critica/\totalSafe*100)}
+\pgfmathtruncatemacro{\pAlta}{round(\alta/\totalSafe*100)}
+\pgfmathtruncatemacro{\pMedia}{round(\media/\totalSafe*100)}
+\pgfmathtruncatemacro{\pBaja}{round(\baja/\totalSafe*100)}
+
+\begin{tikzpicture}
+
+% --- SECTORES ---
+\ifnum\critica>0
+\fill[red!80] (0,0) -- (90:2.5) arc (90:\endCrit:2.5) -- cycle;
+\fi
+
+\ifnum\alta>0
+\fill[orange!90] (0,0) -- (\endCrit:2.5) arc (\endCrit:\endAlta:2.5) -- cycle;
+\fi
+
+\ifnum\media>0
+\fill[yellow!80] (0,0) -- (\endAlta:2.5) arc (\endAlta:\endMedia:2.5) -- cycle;
+\fi
+
+\ifnum\baja>0
+\fill[green!70] (0,0) -- (\endMedia:2.5) arc (\endMedia:\endBaja:2.5) -- cycle;
+\fi
+
+% --- POSICIONES MEDIAS ---
+\pgfmathsetmacro{\midCrit}{90+\angCrit/2}
+\pgfmathsetmacro{\midAlta}{\endCrit+\angAlta/2}
+\pgfmathsetmacro{\midMedia}{\endAlta+\angMedia/2}
+\pgfmathsetmacro{\midBaja}{\endMedia+\angBaja/2}
+
+% --- PORCENTAJES ---
+\ifnum\critica>0
+\node at (\midCrit:1.9) {\textbf{\color{white}\pCrit\%}};
+\fi
+
+\ifnum\alta>0
+\node at (\midAlta:1.9) {\textbf{\color{white}\pAlta\%}};
+\fi
+
+\ifnum\media>0
+\node at (\midMedia:1.9) {\textbf{\pMedia\%}};
+\fi
+
+\ifnum\baja>0
+\node at (\midBaja:1.9) {\textbf{\pBaja\%}};
+\fi
+
+% --- AGUJERO CENTRAL ---
+\fill[white] (0,0) circle (1.2);
+
+% --- TOTAL ---
+\node at (0,0.2) {\Large \textbf{\total}};
+\node at (0,-0.3) {\small \textbf{Total}};
+
+% --- LEYENDA ---
+\begin{scope}[xshift=3.5cm, yshift=1.5cm]
+
+\ifnum\critica>0
+\fill[red!80] (0,0) rectangle (0.4,0.4);
+\node[right] at (0.6,0.2) {\small Crítica (\critica)};
+\fi
+
+\ifnum\alta>0
+\fill[orange!90] (0,-0.7) rectangle (0.4,-0.3);
+\node[right] at (0.6,-0.5) {\small Alta (\alta)};
+\fi
+
+\ifnum\media>0
+\fill[yellow!80] (0,-1.4) rectangle (0.4,-1.0);
+\node[right] at (0.6,-1.2) {\small Media (\media)};
+\fi
+
+\ifnum\baja>0
+\fill[green!70] (0,-2.1) rectangle (0.4,-1.7);
+\node[right] at (0.6,-1.9) {\small Baja (\baja)};
+\fi
+
+\end{scope}
+
+\end{tikzpicture}
+
+\vspace{0.3cm}
+{\small Imagen: Distribución de Vulnerabilidades}
+
+\end{minipage}
+
+} % ← cierre makebox
+\end{center}
+
+%\end{table}
+
+
+  \clearpage
+
+  \section{Resultados Obtenidos}\label{sec:reconocimiento}
+    En este apartado se documentan los resultados de las pruebas llevadas a cabo en los diferentes objetivos establecidos más arriba.
+
+    Se reflejan los pasos ejecutados en cada objetivo, además de una descripción de la vulnerabilidad encontrada junto con su nivel de criticidad.
+% -----------------------------------
+% Subsecciones con los resultados
+% -----------------------------------
+  \subsection{Objetivo 1 - [DIRECCIÓN URL DEL OBEJTIVO 1]}
+    \textbf{Vulnerabilidad:} [VULNERABILIDAD]
+    
+    \textbf{Criticidad:} Alta
+
+    \textbf{Descripción}
+    
+    [DESCRIPCIÓN DE LA VULNERABILIDAD]
+
+    Estas son las pruebas realizadas:
+
+    [WRITE UP DE LA EXPLOTACIÓN DE LA VULNERABILIDAD]
+
+    \textbf{Recomendaciones y Contramedidas:} [RECOMENDACIONES QUE ARREGLEN LA VULNERABILIDAD ENCONTRADA]
+    
+    \vspace{0.5cm}
+    \hrule
+
+    \subsection{Objetivo 2 - https://ejemplo.com}
+    \textbf{Vulnerabilidad:} XSS Almacenado    
+
+    \textbf{Criticidad:} Alta
+
+    \textbf{Descripción}
+    
+    El \textbf{Cross-Site Scripting (XSS) Almacenado}, también conocido como \textbf{Stored XSS o Persistent XSS}, es una vulnerabilidad de seguridad web que ocurre cuando una aplicación permite almacenar datos maliciosos proporcionados por un usuario y posteriormente los muestra a otros usuarios sin realizar una correcta validación o sanitización.
+
+A diferencia del \textbf{XSS reflejado}, el payload malicioso no se envía directamente en la petición y respuesta inmediata, sino que queda persistido en el servidor (por ejemplo, en una base de datos, sistema de comentarios, perfiles de usuario o foros). Cuando otro usuario accede al contenido afectado, el navegador ejecuta automáticamente el código malicioso.
+
+    Estas son las pruebas realizadas:
+
+    [WRITE UP DE LA EXPLOTACIÓN DE LA VULNERABILIDAD]
+
+    \textbf{Recomendaciones y Contramedidas:} [RECOMENDACIONES QUE ARREGLEN LA VULNERABILIDAD ENCONTRADA]
+
+    \vspace{0.5cm}
+    \hrule
+    \clearpage
+
+    \subsection{Objetivo 3 - https://subdominio.ejemplo.com}
+    \textbf{Vulnerabilidad:} CSRF (Cross-Site Request Forgery)   
+
+    \textbf{Criticidad:} Alta
+
+    \textbf{Descripción}
+    
+    El \textbf{Cross-Site Request Forgery (CSRF)}, o falsificación de petición en sitios cruzados, es una vulnerabilidad que permite a un atacante inducir a un usuario autenticado a realizar acciones no deseadas en una aplicación web en la que tiene sesión activa.
+
+Esta vulnerabilidad se produce cuando una aplicación no verifica adecuadamente que una solicitud enviada al servidor ha sido iniciada de forma legítima por el propio usuario, sino que confía únicamente en el hecho de que la petición incluye las credenciales de sesión válidas (como cookies).
+
+    Estas son las pruebas realizadas:
+
+    [WRITE UP DE LA EXPLOTACIÓN DE LA VULNERABILIDAD]
+    
+    \textbf{Recomendaciones y Contramedidas:} [RECOMENDACIONES QUE ARREGLEN LA VULNERABILIDAD ENCONTRADA]
+    
+    \vspace{0.5cm}
+    \hrule
+
+    \clearpage
+
+
+% ------------------------------------------
+% Cambio de fuente para resaltación centrada
+% ------------------------------------------
+  %\vspace{0.3cm}
+%  \begin{center}
+%    \texttt{contact@example.com} \qquad \texttt{contact@votenow.local}
+%  \end{center}
+
+\clearpage
+
+  \section{Tabla de Criticidad}
+  En la siguiente tabla se ven reflejadas las diferentes vulnerabilidades encontradas junto con su \textbf{Nivel de Criticidad y Puntuación CVSS}
+
+  \begin{longtable}{lllll}
+    \toprule
+    \textbf{ID} & \textbf{Vulnerabilidad} & \textbf{Severidad} & \textbf{CVSS} & \textbf{Estado} \\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \textbf{ID} & \textbf{Vulnerabilidad} & \textbf{Severidad} & \textbf{CVSS} & \textbf{Estado} \\
+    \midrule
+    \endhead
+
+      V-01 & SQL Injection en login & Crítica & 9.8 & Abierta \\
+      V-02 & XSS Reflejado & Alta & 7.4 & Abierta \\
+      V-03 & Credenciales por defecto & Alta & 8.1 & Abierta \\
+      V-04 & Enumeración de usuarios & Media & 5.3 & Abierta \\
+      V-05 & Información sensible expuesta & Baja & 3.1 & Abierta \\
+
+    \bottomrule
+    \caption{Resumen de Vulnerabilidades Identificadas} \\
+  \end{longtable}
+
+  \begin{definicion}
+    La \textbf{puntuación CVSS (Common Vulnerability Scoring System)} es un estándar abierto y marco de referencia utilizado en ciberseguridad para calificar la gravedad de las vulnerabilidades de software y hardware, asignándoles un valor numérico del 1 al 10. Ayuda a priorizar la respuesta ante amenazas, clasificándolas en niveles bajo, medio, alto o crítico.
+  \end{definicion}
+
+
+ % -------------------
+ % Inserción de código
+ % -------------------
+  %\begin{lstlisting}[language=Python, caption=Texto debajo del código.]
+  %  #!/usr/bin/env python
+  %  # Codigo en Python o el lenguaje indicado arriba
+  %\end{lstlisting}
+  \clearpage
+  \section{Conclusiones}
+    [REDACCIÓN DE LAS CONCLUSIONES DE LA AUDITORÍA LLEVADA A CABO] 
+\end{document} % Final del documento
