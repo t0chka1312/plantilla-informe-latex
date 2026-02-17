@@ -28,3 +28,13 @@ unzip plantilla_informe_LaTeX.zip
 
 ## Bloques de código reutilizables
 ---------
+
+Bloque para insertar imagen
+``` latex
+\begin{figure}[h]
+  \centering
+  \setlength{\fboxrule}{0.8pt}
+  \fbox{\includegraphics[width=\textwidth]{images/[NOMBRE IMAGEN].png}}
+  \caption{[TEXTO PIE DE IMAGEN]}
+\end{figure}
+```
