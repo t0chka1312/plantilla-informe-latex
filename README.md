@@ -17,6 +17,7 @@ También está el comprimido con la estructura completa, en caso de usar el comp
 
 ``` bash
 mkdir plantilla
+mv plantilla_informe_LaTeX.zip plantilla
 cd plantilla
 unzip plantilla_informe_LaTeX.zip
 ```
