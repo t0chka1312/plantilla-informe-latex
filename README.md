@@ -1,6 +1,10 @@
 # plantilla-informe-latex
 Plantilla para informes de auditorías de pentesting en LaTeX.
 ---------
+El archivo PDF es la muestra de cómo queda.
+En el inicio del código de la plantilla hay varios comentarios con bloques de código indicando qué hacen para usarlos en el resto del informe.
+También están reflejados el final de este mismo documento.
+
 Comandos a ejecutar:
 ``` bash
 mkdir plantilla
@@ -21,4 +25,6 @@ mv plantilla_informe_LaTeX.zip plantilla
 cd plantilla
 unzip plantilla_informe_LaTeX.zip
 ```
-El archivo PDF es la muestra de cómo queda.
+
+## Bloques de código reutilizables
+---------
