@@ -38,3 +38,5 @@ Bloque para insertar imagen
   \caption{[TEXTO PIE DE IMAGEN]}
 \end{figure}
 ```
+![Imagen de informe](assets/imagen.png)
+
