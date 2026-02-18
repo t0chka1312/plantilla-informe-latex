@@ -41,3 +41,17 @@ Bloque para insertar imagen
 <p align="center">
   <img src="assets/imagen.png">
 </p>
+
+Bloque para cuadro de URL personalizado
+``` latex
+\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+  colback=blue!5!white,colframe=blue!75!black,colbacktitle=bluePortada!80!black,
+  title=Dirección URL,fonttitle=\bfseries,
+  boxed title style={size=small,colframe=bluePortada!50!black} ]
+  \centering
+    \href{https://example.com}{\textbf{\color{bluePortada}Dirección URL de Partida}}
+\end{tcolorbox}
+```
+<p align="center">
+  <img src="assets/url.png">
+</p>
