@@ -150,7 +150,7 @@ Bloque para insertar tabla
 
 Bloque para insertar cuadro de definición
 ``` latex
-½ En el preámbulo:
+% En el preámbulo:
 \newtcolorbox{definicion}{
   breakable,
   enhanced,
