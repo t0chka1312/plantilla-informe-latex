@@ -4,8 +4,8 @@
 \usepackage[spanish]{babel} % Para evitar errores con caracteres especiales
 \usepackage[margin=2cm, top=2cm, includefoot]{geometry} % Para establecer márgenes
 \usepackage{graphicx} % Para la inserción de imágenes
-\usepackage[table,xcdraw]{xcolor} % Para la representación de colores
 \usepackage{tikz,lipsum,lmodern} % Para la creación de cajar
+\usepackage[table]{xcolor} % Para la representación de colores
 \usepackage[most]{tcolorbox} % Para incorporar colores en la caja
 \usepackage{fancyhdr} % Estilo de la página
 \usepackage[hidelinks]{hyperref} % Gestión de hipervínculos
@@ -39,6 +39,59 @@
 \newcommand{\media}{1}
 \newcommand{\baja}{1}
 
+% ---- BADGES DE CRITICIDAD ----
+\newtcbox{\criticaBadge}{
+  on line,
+  nobeforeafter,
+  colback=red!10,
+  colframe=red!80,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt
+}
+
+\newtcbox{\altaBadge}{
+  on line,
+  nobeforeafter,
+  colback=orange!15,
+  colframe=orange!85!black,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt
+}
+
+\newtcbox{\mediaBadge}{
+  on line,
+  nobeforeafter,
+  colback=yellow!20,
+  colframe=yellow!70!black,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt
+}
+
+\newtcbox{\bajaBadge}{
+  on line,
+  nobeforeafter, 
+  colback=green!15,
+  colframe=green!70!black,
+  boxrule=0.7pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=1pt,
+  bottom=1pt
+}
+
 % --- TOTAL AUTOMÁTICO ---
 \pgfmathsetmacro{\total}{\critica+\alta+\media+\baja}
 
@@ -64,7 +117,6 @@
 \setlength{\headheight}{40.2pt}
 \fancyhf{}
 \lhead{\includegraphics[width=3cm]{\logoAuditor}}
-% \rhead{\includegraphics[height=40pt]{\logoCandado}}
 \renewcommand{\headrulewidth}{2pt} % Aumentar tamaño barra
 \renewcommand{\headrule}{\hbox to\headwidth{\color{bluePortada}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\lstlistingname}{Código}
@@ -94,9 +146,101 @@
 }
 \lstset{style=mystyle}
 
-\begin{document} % Inicio del documento
-  \cfoot{\thepage}
-  \begin{titlepage}
+% ----------------------------
+% BLOQUES PARA COPIAR Y PEGAR
+% ----------------------------
+
+% ----------------------------
+% BLOQUE PARA INSERTAR IMAGEN
+% ----------------------------
+    %\begin{figure}[h]
+      %\centering
+      %\setlength{\fboxrule}{0.8pt}
+      %\fbox{\includegraphics[width=\textwidth]{images/[NOMBRE IMAGEN].png}}
+      %\caption{[TEXTO PIE DE IMAGEN]}
+    %\end{figure}
+
+% ---------------------------
+% BLOQUE PARA CUADRO CON URL
+% ---------------------------
+%\begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+%  colback=blue!5!white,colframe=blue!75!black,colbacktitle=bluePortada!80!black,
+%  title=Dirección URL,fonttitle=\bfseries,
+%  boxed title style={size=small,colframe=bluePortada!50!black} ]
+%  \centering
+%    \href{https://example.com}{\textbf{\color{bluePortada}Dirección URL de Partida}}
+%\end{tcolorbox}
+
+% ----------------------
+% TABLA DE DOS COLUMNAS
+% ----------------------
+%\begin{table}[H]
+%    \centering
+%    \begin{tabular}{ll}
+%      \toprule
+%      \textbf{Columna 1} & \textbf{Columna 2} \\
+%      \midrule
+%      Cliente & \companyName \\
+%      1 & [EJEMPLO 1] \\
+%      2 & [EJEMPLO 2] \\
+%      3 & [EJEMPLO 3] \\
+%      \bottomrule
+%    \end{tabular}
+%    \caption{Texto pie de tabla}
+%  \end{table}
+
+% -----------------------------
+% LISTA CON PUNTOS SIN NUMERAR
+% -----------------------------
+
+%\begin{itemize}
+%    \item \textbf{Elemento 1}
+%    \item \textbf{Elemento 2}
+%    \item \textbf{Elemento 3}
+%  \end{itemize}
+
+% ------------------------------------------
+% CAMBIO DE FUENTE PARA RESALTACIÓN CENTRADA
+% ------------------------------------------
+%\vspace{0.3cm}
+%  \begin{center}
+%    \texttt{contact@example.com} \qquad \texttt{contact@votenow.local}
+%  \end{center}
+
+% ---------------------
+% CUADRO DE DEFINICIÓN
+% --------------------
+
+%\begin{definicion}
+%    La \textbf{puntuación CVSS (Common Vulnerability Scoring System)} es un estándar abierto y marco de referencia utilizado en ciberseguridad para calificar la gravedad de las vulnerabilidades de software y hardware, asignándoles un valor numérico del 1 al 10. Ayuda a priorizar la respuesta ante amenazas, clasificándolas en niveles bajo, medio, alto o crítico.
+%  \end{definicion}
+
+% -------------------
+% INSERCIÓN DE CÓDIGO
+% -------------------
+  %\begin{lstlisting}[language=Python, caption=Texto debajo del código.]
+  %  #!/usr/bin/env python
+  %  # Codigo en Python o el lenguaje indicado arriba
+  %\end{lstlisting}
+
+%--------------------------------------
+% NODOS POR BLOQUES Y UNIÓN CON LÍNEAS
+%--------------------------------------
+%\centering
+%  \begin{tikzpicture}[node distance=2cm, every node/.style={rectangle, draw, fill=white}]
+%    \node (center) {TCP};
+%    \node (port1) [below left of=center, node distance=3cm] {Puerto 80};
+%    \node (port2) [below right of=center, node distance=3cm] {Puerto 2082};
+%    \draw (center) -- (port1);
+%    \draw (center) -- (port2);
+%  \end{tikzpicture}
+% ------------------------------------------------------------------------------------------------
+
+% Inicio del documento
+% ----------------------
+\begin{document} 
+\cfoot{\thepage}
+  \begin{titlepage} % PORTADA
     \centering
     \includegraphics[width=0.5\textwidth]{\logoPortada}\par\vspace{1cm}
     {\scshape\LARGE \textbf{Informe Técnico-Ejecutivo}\par\vspace{0.4cm}}
@@ -114,29 +258,33 @@
       {\large \startDate}
     \vfill
   \end{titlepage}
+% ----------------------------------------------------------------------------
 
-  % -------------------------------------------------------------------
   % Comienzo del índice
+  % --------------------
   \clearpage
   \tableofcontents
   \clearpage
-  % -------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+
+  % Comienzo documento principal
+  % -----------------------------
   \section{Antecedentes}
   El presente documento recoge los resultados obtenidos durante la fase de auditoría a la empresa \textbf{\companyName}, dedicada a [DEDICACIÓN DE LA EMPRESA].
 
     Durante las pruebas se simulan las actividades que realizaría un atacante real, descubriendo las vulnerabilidades, su nivel de riesgo, y generando recomendaciones que permitan al cliente realizar la remediación de estas. En cada sección de este informe se detallan los aspectos importantes de la forma en que un atacante podría utilizar la vulnerabilidad para comprometer y obtener acceso no autorizado a información sensible. Se incluyen además directrices que al ser aplicadas mejoraran los niveles de confidencialidad, integridad y disponibilidad de los sistemas analizados.
 
-% --------------------------------
-% Cuadro Para Dirección URL
-% --------------------------------
+  % --------------------------------
+  % Cuadro Para Dirección URL
+  % --------------------------------
 
   \begin{tcolorbox}[enhanced,attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
   colback=blue!5!white,colframe=blue!75!black,colbacktitle=bluePortada!80!black,
   title=Dirección URL,fonttitle=\bfseries,
   boxed title style={size=small,colframe=bluePortada!50!black} ]
-  \centering
+    \centering
     \href{https://example.com}{\textbf{\color{bluePortada}Dirección URL de Partida}}
- \end{tcolorbox}
+  \end{tcolorbox}
 
   \vspace{0.5cm}
 
@@ -154,15 +302,12 @@
 
   \end{center}
 
-  \section{Objetivos}
-
+  \section{Objetivo}
   Los objetivos de la presente auditoría de seguridad se enfocan, primeramente, en la identificación de posibles vulnerabilidades y debilidades de la página web de la empresa \textbf{\color{bluePortada}{\companyName}} para su posterior explotación, con el propósito de garantizar la integridad y confidencialidad de la información almacenada en él.
   \begin{center} 
     [AÑADIR INFORMACIÓN ADICIONAL SI ES NECESARIO]
   \end{center}
 
-  % Salto de página
-  %\clearpage
   \subsection{Alcance}
 
   La evaluación se ha centrado en los siguientes objetivos establecidos en el alcance. Aquí quedan representados los \textbf{dominios, subdominios y enpoints} que han conllevado alguna incidencia en la auditoría:
@@ -195,13 +340,11 @@ Aquí quedan reflejados los impedimentos y limitaciones que deberá llevar la au
   \section{Resumen Ejecutivo}
     Este es un resumen ejecutivo de manera general donde se pueden observar mediante tablas y gráficos las vulnerabilidades y problemas encontrados junto con su severidad durante la auditoría.
     
-    Al final de este documento se han especificado las \textbf{Contramedidas} a llevar a cabo para la mitigación de estas vulnerabilidades.
+    Tras cada objetivo y pasos llevados a cabo, se especifican una serie de \textbf{Recomendaciones y Contramedidas} a llevar a cabo para la mitigación de estas vulnerabilidades.
     \begin{center}
       [AÑADIR INFORMACIÓN ADICIONAL SI ES NECESARIO]
     \end{center}
 
-%\begin{table}[htbp]
-%\centering
 
 % ---------------- TABLA + DONUT CENTRADOS ----------------
 \begin{center}
@@ -224,7 +367,7 @@ Información sensible expuesta & Baja \\
 \end{tabular}
 
 \vspace{0.3cm}
-{\small Cuadro: Resumen de Vulnerabilidades}
+{\small Cuadro 2: Resumen de Vulnerabilidades}
 
 \end{minipage}
 \hspace{1cm}
@@ -328,30 +471,29 @@ Información sensible expuesta & Baja \\
 \end{tikzpicture}
 
 \vspace{0.3cm}
-{\small Imagen: Distribución de Vulnerabilidades}
+{\small Gráfico 1: Distribución de Vulnerabilidades}
 
 \end{minipage}
 
 } % ← cierre makebox
 \end{center}
 
-%\end{table}
-
 
   \clearpage
 
-  \section{Resultados Obtenidos}\label{sec:reconocimiento}
+  \section{Resultados Obtenidos}
     En este apartado se documentan los resultados de las pruebas llevadas a cabo en los diferentes objetivos establecidos más arriba.
 
     Se reflejan los pasos ejecutados en cada objetivo, además de una descripción de la vulnerabilidad encontrada junto con su nivel de criticidad.
+
 % -----------------------------------
 % Subsecciones con los resultados
 % -----------------------------------
   \subsection{Objetivo 1 - [DIRECCIÓN URL DEL OBEJTIVO 1]}
     \textbf{Vulnerabilidad:} [VULNERABILIDAD]
     
-    \textbf{Criticidad:} Alta
-
+    \textbf{Criticidad:} \bajaBadge{Baja}
+    
     \textbf{Descripción}
     
     [DESCRIPCIÓN DE LA VULNERABILIDAD]
@@ -368,7 +510,7 @@ Información sensible expuesta & Baja \\
     \subsection{Objetivo 2 - https://ejemplo.com}
     \textbf{Vulnerabilidad:} XSS Almacenado    
 
-    \textbf{Criticidad:} Alta
+    \textbf{Criticidad:} \altaBadge{Alta}
 
     \textbf{Descripción}
     
@@ -408,36 +550,22 @@ Esta vulnerabilidad se produce cuando una aplicación no verifica adecuadamente 
 
     \clearpage
 
-
-% ------------------------------------------
-% Cambio de fuente para resaltación centrada
-% ------------------------------------------
-  %\vspace{0.3cm}
-%  \begin{center}
-%    \texttt{contact@example.com} \qquad \texttt{contact@votenow.local}
-%  \end{center}
-
 \clearpage
 
   \section{Tabla de Criticidad}
   En la siguiente tabla se ven reflejadas las diferentes vulnerabilidades encontradas junto con su \textbf{Nivel de Criticidad y Puntuación CVSS}
 
-  \begin{longtable}{lllll}
+  \begin{longtable}{llll}
     \toprule
-    \textbf{ID} & \textbf{Vulnerabilidad} & \textbf{Severidad} & \textbf{CVSS} & \textbf{Estado} \\
-    \midrule
-    \endfirsthead
-
-    \toprule
-    \textbf{ID} & \textbf{Vulnerabilidad} & \textbf{Severidad} & \textbf{CVSS} & \textbf{Estado} \\
+    \textbf{ID} & \textbf{Vulnerabilidad} & \textbf{Criticidad} & \textbf{CVSS} \\
     \midrule
     \endhead
 
-      V-01 & SQL Injection en login & Crítica & 9.8 & Abierta \\
-      V-02 & XSS Reflejado & Alta & 7.4 & Abierta \\
-      V-03 & Credenciales por defecto & Alta & 8.1 & Abierta \\
-      V-04 & Enumeración de usuarios & Media & 5.3 & Abierta \\
-      V-05 & Información sensible expuesta & Baja & 3.1 & Abierta \\
+      V-01 & SQL Injection en login & Crítica & 9.8 \\
+      V-02 & XSS Reflejado & Alta & 7.4 \\
+      V-03 & Credenciales por defecto & Alta & 8.1 \\
+      V-04 & Enumeración de usuarios & Media & 5.3 \\
+      V-05 & Información sensible expuesta & Baja & 3.1 \\
 
     \bottomrule
     \caption{Resumen de Vulnerabilidades Identificadas} \\
@@ -446,16 +574,8 @@ Esta vulnerabilidad se produce cuando una aplicación no verifica adecuadamente 
   \begin{definicion}
     La \textbf{puntuación CVSS (Common Vulnerability Scoring System)} es un estándar abierto y marco de referencia utilizado en ciberseguridad para calificar la gravedad de las vulnerabilidades de software y hardware, asignándoles un valor numérico del 1 al 10. Ayuda a priorizar la respuesta ante amenazas, clasificándolas en niveles bajo, medio, alto o crítico.
   \end{definicion}
-
-
- % -------------------
- % Inserción de código
- % -------------------
-  %\begin{lstlisting}[language=Python, caption=Texto debajo del código.]
-  %  #!/usr/bin/env python
-  %  # Codigo en Python o el lenguaje indicado arriba
-  %\end{lstlisting}
   \clearpage
+
   \section{Conclusiones}
     [REDACCIÓN DE LAS CONCLUSIONES DE LA AUDITORÍA LLEVADA A CABO] 
 \end{document} % Final del documento
