@@ -131,6 +131,13 @@ Bloque para insertar cuadro de definición
 
 Bloque para insertar gráfico ciruclar con porcentajes
 ``` latex
+% En el preámbulo, establece el número de cada tipo de vulnerabilidad:
+\newcommand{\critica}{1}
+\newcommand{\alta}{2}
+\newcommand{\media}{1}
+\newcommand{\baja}{1}
+
+% En el código principal:
 \begin{minipage}{0.48\textwidth}
   \centering
 
