@@ -3,11 +3,10 @@ Plantilla para informes de auditorías de pentesting en LaTeX.
 ---------
 El archivo PDF es la muestra de cómo queda.
 En el inicio del código de la plantilla hay varios comentarios con bloques de código indicando qué hacen para usarlos en el resto del informe.
-También están reflejados el final de este mismo documento.
+También están reflejados el final de este mismo README.
 
 Comandos a ejecutar:
 ``` bash
-mkdir plantilla
 git clone https://github.com/t0chka1312/plantilla-informe-latex
 cd plantilla-informe-latex
 latexmk -pdf plantilla.tex -pvc -> Para compilar y ver cambios
@@ -17,17 +16,10 @@ latexmk -C
 latexmk -pdf plantilla.tex -> Después con la opción -pvc
 ```
 
-También está el comprimido con la estructura completa, en caso de usar el comprimido:
-
-``` bash
-mkdir plantilla
-mv plantilla_informe_LaTeX.zip plantilla
-cd plantilla
-unzip plantilla_informe_LaTeX.zip
-```
-
 ## Bloques de código reutilizables
 ---------
+Cabe destacar, que para el uso de todas las funcionalidades y esquemas de colores de esta plantilla, es muy importante que el preámbulo sea idéntico al del código de plantilla.tex, con todos los paquetes importados, comandos nuevos configurados y esquemas de colores.
+
 
 Bloque para insertar imagen
 ``` latex
@@ -73,6 +65,37 @@ Bloque para insertar nodos unidos por líneas
 
 Tipos de criticidades por colores
 ``` latex
+% En el preámbulo:
+  bottom=2pt
+}
+
+\newtcbox{\mediaBadge}{
+  on line,
+  nobeforeafter,
+  colback=yellow!20,
+  colframe=yellow!70!black,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt
+}
+
+\newtcbox{\bajaBadge}{
+  on line,
+  nobeforeafter, 
+  colback=green!15,
+  colframe=green!70!black,
+  boxrule=0.7pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=1pt,
+  bottom=1pt
+}
+
+% En el código principal:
 \criticaBadge{Crítica}
 \altaBadge{Alta}
 \mediaBadge{Media}
