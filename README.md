@@ -65,7 +65,29 @@ Bloque para insertar nodos unidos por líneas
 
 Tipos de criticidades por colores
 ``` latex
-% En el preámbulo:
+ \newtcbox{\criticaBadge}{
+  on line,
+  nobeforeafter,
+  colback=red!10,
+  colframe=red!80,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt
+}
+
+\newtcbox{\altaBadge}{
+  on line,
+  nobeforeafter,
+  colback=orange!15,
+  colframe=orange!85!black,
+  boxrule=0.8pt,
+  arc=4pt,
+  left=6pt,
+  right=6pt,
+  top=2pt,
   bottom=2pt
 }
 
@@ -94,7 +116,6 @@ Tipos de criticidades por colores
   top=1pt,
   bottom=1pt
 }
-
 % En el código principal:
 \criticaBadge{Crítica}
 \altaBadge{Alta}
@@ -143,6 +164,7 @@ Bloque para insertar cuadro de definición
   title=Definición,
   attach title to upper=\par,
 }
+
 % En el código principal:
 \begin{definicion}
     La \textbf{puntuación CVSS (Common Vulnerability Scoring System)} es un estándar abierto y marco de referencia utilizado en ciberseguridad para calificar la gravedad de las vulnerabilidades de software y hardware, asignándoles un valor numérico del 1 al 10. Ayuda a priorizar la respuesta ante amenazas, clasificándolas en niveles bajo, medio, alto o crítico.
