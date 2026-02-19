@@ -9,11 +9,11 @@ Comandos a ejecutar:
 ``` bash
 git clone https://github.com/t0chka1312/plantilla-informe-latex
 cd plantilla-informe-latex
-latexmk -pdf plantilla.tex -pvc -> Para compilar y ver cambios
+latexmk -pdf plantilla.tex -pvc
 
 En caso de error:
 latexmk -C
-latexmk -pdf plantilla.tex -> Después con la opción -pvc
+latexmk -pdf plantilla.tex
 ```
 
 ## Bloques de código reutilizables
