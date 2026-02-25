@@ -17,7 +17,6 @@ latexmk -pdf plantilla.tex
 ```
 
 ## Bloques de código reutilizables
----------
 Cabe destacar, que para el uso de todas las funcionalidades y esquemas de colores de esta plantilla, es muy importante que el preámbulo sea idéntico al del código de plantilla.tex, con todos los paquetes importados, comandos nuevos configurados y esquemas de colores.
 
 
