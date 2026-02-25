@@ -25,7 +25,7 @@ Bloque para insertar imagen
 \begin{figure}[h]
   \centering
   \setlength{\fboxrule}{0.8pt}
-  \fbox{\includegraphics[width=\textwidth]{images/[NOMBRE IMAGEN].png}}
+  \fbox{\includegraphics[width=0.98\textwidth]{images/[NOMBRE IMAGEN].png}}
   \caption{[TEXTO PIE DE IMAGEN]}
 \end{figure}
 ```
