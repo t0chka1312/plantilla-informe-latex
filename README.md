@@ -311,3 +311,16 @@ Bloque para cambio de fuente para resaltación centrada
 <p align="center">
   <img src="assets/resaltación.png">
 </p>
+
+Bloque para inserción de código
+``` latex
+\begin{lstlisting}[language=Python, caption=Texto debajo del código.]
+#!/usr/bin/env python
+# Codigo en Python o el lenguaje indicado arriba
+import os
+\end{lstlisting}
+```
+
+<p align="center">
+  <img src="assets/código.png">
+</p>
